@@ -1,0 +1,7 @@
+def shift_character(char, key, direction):
+    if char.isalpha():
+        start = ord('A') if char.isupper() else ord('a')
+        shift = key if direction == 'encrypt' else -key
+        new_pos = (ord(char) - start + shift) % 26
+        return chr(start + new_pos)
+    return char
