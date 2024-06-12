@@ -1,0 +1,9 @@
+def get_user_input():
+    message = input("Enter the message: ")
+    while True:
+        try:
+            key = int(input("Enter the key (integer): "))
+            break
+        except ValueError:
+            print("Nope, try again! Please enter an integer!")
+    return message, key
