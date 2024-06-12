@@ -1,0 +1,3 @@
+def select_operation():
+    operation = input("Type 'e' to encrypt or 'd' to decrypt: ").lower()
+    return operation
