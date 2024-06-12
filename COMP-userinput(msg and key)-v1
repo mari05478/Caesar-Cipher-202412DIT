@@ -3,6 +3,3 @@ def get_user_input():
     key = int(input("Enter the key (integer): "))
     return message, key
 
-def select_operation():
-    operation = input("Type 'e' to encrypt or 'd' to decrypt: ").lower()
-    return operation
