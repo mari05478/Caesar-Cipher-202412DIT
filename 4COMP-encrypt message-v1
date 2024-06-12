@@ -1,0 +1,2 @@
+def encrypt_message(message, key):
+    return ''.join(shift_character(char, key, 'encrypt') for char in message)
