@@ -1,0 +1,2 @@
+def decrypt_message(message, key):
+    return ''.join(shift_character(char, key, 'decrypt') for char in message)
