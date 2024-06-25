@@ -1,1 +1,15 @@
-code w test function
+def get_user_input():
+    message = input("Enter the message: ")
+    while True:
+        try:
+            key = int(input("Enter the key (integer): "))
+            break
+        except ValueError:
+            print("Nope, try again! Please enter an integer!")
+    return message, key
+
+# Test function for get_user_input, not part of main code
+
+message, key = get_user_input()
+print("Message:", message)
+print("Key:", key)
