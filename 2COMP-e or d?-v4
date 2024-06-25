@@ -1,1 +1,17 @@
-code w test function
+def select_operation():
+    valid_encrypt = ['e', 'encrypt', 'en', 'enc', 'encr']
+    valid_decrypt = ['d', 'decrypt', 'de', 'dec', 'decr']
+
+    while True:
+        operation = input("Type 'e' to encrypt or 'd' to decrypt: ").lower()
+        if operation in valid_encrypt:
+            return 'e'
+        elif operation in valid_decrypt:
+            return 'd'
+        else:
+            print("Invalid operation, try again!")
+
+# Test function for select_operation
+
+operation = select_operation()
+print("Operation:", operation)
