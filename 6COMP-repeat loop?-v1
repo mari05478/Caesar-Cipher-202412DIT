@@ -1,1 +1,6 @@
+        # Ask if the user wants to go again
+        repeat = input("Do you want to go again? (yes/no): ").lower()
+        if repeat != 'yes':
+            print("Thank you for using this Caesar Cipher program, Goodbye!")
+            break
 
