@@ -1,0 +1,13 @@
+        # Ask the user if they want to go again
+        while True:
+            repeat = input("Do you want to go again? (yes/no): ").lower()
+            valid_yes = ['y', 'yes', 'ye', 'ya', 'yeah', 'sure']
+            valid_no = ['n', 'no', 'na', 'nah', 'nope']
+
+            if repeat in valid_yes:
+                break
+            elif repeat in valid_no:
+                print("Thank you for using this Caesar Cipher program, Goodbye!")
+                return
+            else:
+                print("Invalid input! Please enter 'yes' or 'no'.")
