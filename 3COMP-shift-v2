@@ -1,1 +1,15 @@
-code w test function
+def shift_character(char, key, direction):
+    if char.isalpha():
+        start = ord('A') if char.isupper() else ord('a')
+        shift = key if direction == 'encrypt' else -key
+        new_pos = (ord(char) - start + shift) % 26
+        return chr(start + new_pos)
+    return char
+
+# Test function for shift_character
+
+char = input("Enter a character: ")
+key = int(input("Enter the key (integer): "))
+direction = input("Enter direction ('encrypt' or 'decrypt'): ")
+result = shift_character(char, key, direction)
+print("Shifted Character:", result)
