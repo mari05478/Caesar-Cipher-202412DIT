@@ -1,0 +1,112 @@
+import time
+
+# Display the welcome message and intro
+print("Welcome to the Caesar Cipher Solver!")
+time.sleep(2)
+print("A Caesar Cipher is a type of substitution cipher in which each letter "
+      "in the plaintext is shifted a certain number of places down or up the "
+      "alphabet.")
+time.sleep(2)
+print("You can use this tool to encrypt or decrypt a message by specifying a "
+      "key, which is the number of positions each letter in the message is "
+      "shifted.")
+time.sleep(2)
+print("Let's get started!")
+time.sleep(2)
+
+# Function to get user input (message and key)
+def get_user_input():
+    # Prompt the user to enter the message to be encrypted or decrypted
+    message = input("Enter the message: ")
+
+    # Loop until a valid integer key is entered
+    while True:
+        try:
+            key = int(input("Enter the key (integer): "))
+            break
+        except ValueError:
+            print("Nope, try again! Please enter an integer!")
+    return message, key
+
+# Function to select between encryption and decryption
+def select_operation():
+    # List of valid inputs for encryption
+    valid_encrypt = ['e', 'encrypt', 'en', 'enc', 'encr']
+    # List of valid inputs for decryption
+    valid_decrypt = ['d', 'decrypt', 'de', 'dec', 'decr']
+
+    # Loop until a valid operation is entered
+    while True:
+        # Prompt the user to enter the operation
+        operation = input("Type 'e' to encrypt or 'd' to decrypt: ").lower()
+        # Check if the operation is in the list of valid encryption inputs
+        if operation in valid_encrypt:
+            return 'e'
+        # Check if the operation is in the list of valid decryption inputs
+        elif operation in valid_decrypt:
+            return 'd'
+        else:
+            # Print an error message if the input is invalid
+            print("Invalid operation, try again!")
+
+# Helper function which will shift a character by the given key
+def shift_character(char, key, direction):
+    # Check if the character is a letter
+    if char.isalpha():
+        # Determine the ASCII value for 'A' or 'a' based on the case of the
+        # character
+        start = ord('A') if char.isupper() else ord('a')
+        # Determine the shift direction (positive for encryption, negative for
+        # decryption)
+        shift = key if direction == 'encrypt' else -key
+        # Calculate the new position of the character in the alphabet
+        new_pos = (ord(char) - start + shift) % 26
+        # Return the shifted character
+        return chr(start + new_pos)
+    # Return the character unchanged if it is not a letter
+    return char
+
+# This function will use the shift_character function to encrypt the message
+def encrypt_message(message, key):
+    # Encrypt the message by shifting each character
+    return ''.join(shift_character(char, key, 'encrypt') for char in message)
+
+# This function will use the shift_character function to decrypt the message
+def decrypt_message(message, key):
+    # Decrypt the message by shifting each character
+    return ''.join(shift_character(char, key, 'decrypt') for char in message)
+
+# Function to execute the main logic
+def caesar_cipher():
+    while True:
+        # Get the message and key from the user
+        message, key = get_user_input()
+        # Get the operation (encrypt or decrypt) from the user
+        operation = select_operation()
+
+        # Encrypt the message if the user selected encryption
+        if operation == 'e':
+            result = encrypt_message(message, key)
+            print("Encrypted Message:", result)
+        # Decrypt the message if the user selected decryption
+        elif operation == 'd':
+            result = decrypt_message(message, key)
+            print("Decrypted Message:", result)
+
+        # Ask the user if they want to go again
+        while True:
+            repeat = input("Do you want to go again? (yes/no): ").lower()
+            valid_yes = ['y', 'yes', 'ye', 'ya', 'yeah', 'sure']
+            valid_no = ['n', 'no', 'na', 'nah', 'nope']
+
+            if repeat in valid_yes:
+                break
+            elif repeat in valid_no:
+                print("Thank you for using this Caesar Cipher program, "
+                      "Goodbye!")
+                return
+            else:
+                print("Invalid input! Please enter 'yes' or 'no'.")
+
+# Run the Caesar Cipher solver
+caesar_cipher()
