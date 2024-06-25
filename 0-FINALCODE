@@ -16,8 +16,13 @@ time.sleep(2)
 
 # Function to get user input (message and key)
 def get_user_input():
-    # Prompt the user to enter the message to be encrypted or decrypted
-    message = input("Enter the message: ")
+    while True:
+        message = input("Enter the message: ")
+        if message.strip():  # Check if message is not empty after stripping
+            # whitespace
+            break
+        else:
+            print("Message cannot be blank! Please enter a message.")
 
     # Loop until a valid integer key is entered
     while True:
