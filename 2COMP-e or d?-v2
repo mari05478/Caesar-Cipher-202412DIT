@@ -1,1 +1,9 @@
-code for error if not e or d
+def select_operation():
+    while True:
+        operation = input("Type 'e' to encrypt or 'd' to decrypt: ").lower()
+        if operation == 'e':
+            return 'e'
+        elif operation == 'd':
+            return 'd'
+        else:
+            print("Invalid input, try again!")
