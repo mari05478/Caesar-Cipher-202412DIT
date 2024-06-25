@@ -1,1 +1,19 @@
-full code w comments
+def shift_character(char, key, direction):
+    if char.isalpha():
+        start = ord('A') if char.isupper() else ord('a')
+        shift = key if direction == 'encrypt' else -key
+        new_pos = (ord(char) - start + shift) % 26
+        return chr(start + new_pos)
+    return char
+
+# This function will use the shift_character function to decrypt the message
+def decrypt_message(message, key):
+    # Decrypt the message by shifting each character
+    return ''.join(shift_character(char, key, 'decrypt') for char in message)
+
+# Test function for decrypt_message
+
+message = input("Enter the message: ")
+key = int(input("Enter the key (integer): "))
+result = decrypt_message(message, key)
+print("Decrypted Message:", result)
