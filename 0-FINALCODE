@@ -3,7 +3,8 @@ import time
 # Display the welcome message and intro
 print("Welcome to the Caesar Cipher Solver!")
 time.sleep(2)
-print("A Caesar Cipher is a type of substitution cipher in which each letter in the plaintext is shifted a certain number of places down or up the alphabet.")
+print("A Caesar Cipher is a type of substitution cipher in which each 
+letter in the plaintext is shifted a certain number of places down or up the alphabet.")
 time.sleep(2)
 print("You can use this tool to encrypt or decrypt a message by specifying a key, which is the number of positions each letter in the message is shifted.")
 time.sleep(2)
