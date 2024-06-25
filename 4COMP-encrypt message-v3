@@ -1,1 +1,19 @@
-full code w comments
+def shift_character(char, key, direction):
+    if char.isalpha():
+        start = ord('A') if char.isupper() else ord('a')
+        shift = key if direction == 'encrypt' else -key
+        new_pos = (ord(char) - start + shift) % 26
+        return chr(start + new_pos)
+    return char
+
+# This function will use the shift_character function to encrypt the message
+def encrypt_message(message, key):
+    # Encrypt the message by shifting each character
+    return ''.join(shift_character(char, key, 'encrypt') for char in message)
+
+# Test function for encrypt_message
+
+message = input("Enter the message: ")
+key = int(input("Enter the key (integer): "))
+result = encrypt_message(message, key)
+print("Encrypted Message:", result)
