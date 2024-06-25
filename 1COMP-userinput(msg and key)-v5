@@ -1,0 +1,24 @@
+# Function to get user input (message and key)
+def get_user_input():
+    while True:
+        message = input("Enter the message: ")
+        if message.strip():  # Check if message is not empty after stripping
+            # whitespace
+            break
+        else:
+            print("Message cannot be blank! Please enter a message.")
+
+    # Loop until a valid integer key is entered
+    while True:
+        try:
+            key = int(input("Enter the key (integer): "))
+            break
+        except ValueError:
+            print("Nope, try again! Please enter an integer!")
+    return message, key
+
+# Test function for get_user_input
+
+message, key = get_user_input()
+print("Message:", message)
+print("Key:", key)
