@@ -50,5 +50,3 @@ def caesar_cipher():
         print("Invalid operation selected.")
 
 caesar_cipher()
-
-caesar_cipher()
