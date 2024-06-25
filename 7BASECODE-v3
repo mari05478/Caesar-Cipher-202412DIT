@@ -1,1 +1,52 @@
+def get_user_input():
+    message = input("Enter the message: ")
 
+    while True:
+        try:
+            key = int(input("Enter the key (integer): "))
+            break
+        except ValueError:
+            print("Nope, try again! Please enter an integer!")
+    return message, key
+
+def select_operation():
+    valid_encrypt = ['e', 'encrypt', 'en', 'enc', 'encr']
+    valid_decrypt = ['d', 'decrypt', 'de', 'dec', 'decr']
+
+    while True:
+        operation = input("Type 'e' to encrypt or 'd' to decrypt: ").lower()
+        if operation in valid_encrypt:
+            return 'e'
+        elif operation in valid_decrypt:
+            return 'd'
+        else:
+            print("Invalid operation, try again!")
+
+def shift_character(char, key, direction):
+    if char.isalpha():
+        start = ord('A') if char.isupper() else ord('a')
+        shift = key if direction == 'encrypt' else -key
+        new_pos = (ord(char) - start + shift) % 26
+        return chr(start + new_pos)
+    return char
+
+def encrypt_message(message, key):
+    return ''.join(shift_character(char, key, 'encrypt') for char in message)
+
+def decrypt_message(message, key):
+    return ''.join(shift_character(char, key, 'decrypt') for char in message)
+
+def caesar_cipher():
+    message, key = get_user_input()
+    operation = select_operation()
+    
+    if operation == 'e':
+        result = encrypt_message(message, key)
+        print("Encrypted Message:", result)
+    elif operation == 'd':
+        result = decrypt_message(message, key)
+        print("Decrypted Message:", result)
+    else:
+        print("Invalid operation selected.")
+
+caesar_cipher()
