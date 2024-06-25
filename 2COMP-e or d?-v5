@@ -1,1 +1,25 @@
-full code w comments
+# Function to select between encryption and decryption
+def select_operation():
+    # List of valid inputs for encryption
+    valid_encrypt = ['e', 'encrypt', 'en', 'enc', 'encr']
+    # List of valid inputs for decryption
+    valid_decrypt = ['d', 'decrypt', 'de', 'dec', 'decr']
+
+    # Loop until a valid operation is entered
+    while True:
+        # Prompt the user to enter the operation
+        operation = input("Type 'e' to encrypt or 'd' to decrypt: ").lower()
+        # Check if the operation is in the list of valid encryption inputs
+        if operation in valid_encrypt:
+            return 'e'
+        # Check if the operation is in the list of valid decryption inputs
+        elif operation in valid_decrypt:
+            return 'd'
+        else:
+            # Print an error message if the input is invalid
+            print("Invalid operation, try again!")
+
+# Test function for select_operation
+
+operation = select_operation()
+print("Operation:", operation)
